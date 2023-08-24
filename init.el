@@ -1,22 +1,16 @@
-; Emacs 28.2 error (replace once Emacs 29 is released)
-(setq image-types (cons 'svg image-types))
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 ;;; Mode Line
 (setq column-number-mode t)
+(setq-default fill-column 80)
 
-; Whitespace
-(setq-default show-trailing-whitespace 't)
-(setq-default indicate-empty-lines 't)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-; Info configuration
-(add-to-list 'Info-default-directory-list "~/Info")
-
-; Font
-(set-frame-font "Menlo 14" nil t)
+;;; Font
+(add-to-list 'default-frame-alist
+	     '(font . "Monospace-10"))
 
 ;;; Straight.el
-
 ; Bootstrap Straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -43,16 +37,3 @@
   :defer t
   :ensure t
   :straight t)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(TeX-modes '(tex-mode plain-tex-mode latex-mode doctex-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
