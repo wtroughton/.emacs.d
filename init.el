@@ -37,3 +37,6 @@
   :defer t
   :ensure t
   :straight t)
+
+(use-package rg
+  :straight t)
