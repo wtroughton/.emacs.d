@@ -6,9 +6,14 @@
 (setq column-number-mode t)
 (setq-default fill-column 80)
 
+;;; Theme
+(load-theme 'modus-operandi)
+
 ;;; Font
 (add-to-list 'default-frame-alist
 	     '(font . "Monospace-10"))
+
+(setq org-log-done 'time)
 
 ;;; Straight.el
 ; Bootstrap Straight.el
@@ -29,10 +34,6 @@
 ; use-package will use straight.el to automatically install missing packages if you provide :straight t.
 (straight-use-package 'use-package)
 
-;(use-package exec-path-from-shell
-;  :straight t)
-
-; AUCTeX
 (use-package auctex
   :defer t
   :ensure t
