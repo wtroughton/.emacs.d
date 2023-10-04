@@ -2,9 +2,13 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+;;; Disable backup files (ending in ~)
+(setq make-backup-files nil)
+
 ;;; Mode Line
 (setq column-number-mode t)
 (setq-default fill-column 80)
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 ;;; Theme
 (load-theme 'modus-operandi)
@@ -33,11 +37,6 @@
 ; Use use-package
 ; use-package will use straight.el to automatically install missing packages if you provide :straight t.
 (straight-use-package 'use-package)
-
-(use-package auctex
-  :defer t
-  :ensure t
-  :straight t)
 
 (use-package rg
   :straight t)
