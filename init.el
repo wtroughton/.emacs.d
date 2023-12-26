@@ -1,4 +1,3 @@
-(menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
@@ -14,8 +13,13 @@
 (load-theme 'modus-operandi)
 
 ;;; Font
-(add-to-list 'default-frame-alist
-	     '(font . "Monospace-10"))
+; (unless (eq system-type 'darwin) (add-to-list 'default-frame-alist
+;	     '(font . "Monospace-10")))
+
+(if (eq system-type 'darwin)
+    (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font Mono-16"))
+  (add-to-list 'default-frame-alist '(font . "Monospace-10"))
+)
 
 (setq org-log-done 'time)
 
@@ -38,5 +42,15 @@
 ; use-package will use straight.el to automatically install missing packages if you provide :straight t.
 (straight-use-package 'use-package)
 
+(use-package slime
+  :straight t
+  :init
+  (setq inferior-lisp-program "sbcl"))
+
 (use-package rg
   :straight t)
+
+(use-package pdf-tools
+  :straight t)
+
+(add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
