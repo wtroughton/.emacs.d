@@ -18,8 +18,10 @@
 
 (if (eq system-type 'darwin)
     (add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font Mono-16"))
-  (add-to-list 'default-frame-alist '(font . "Monospace-10"))
-)
+  (add-to-list 'default-frame-alist '(font . "Monospace-10")))
+
+;; Always start with *scratch*
+(setq initial-buffer-choice t)
 
 (setq org-log-done 'time)
 
@@ -42,6 +44,15 @@
 ; use-package will use straight.el to automatically install missing packages if you provide :straight t.
 (straight-use-package 'use-package)
 
+; Dependency of magit Straight.el does not fetch seq as it is part of
+; 'straight-recipes-gnu-elpa-ignored-packages. Remove this dependency in the
+; future version of Straight.el
+(use-package seq
+  :straight t)
+
+(use-package magit
+  :straight t)
+
 (use-package slime
   :straight t
   :init
@@ -50,6 +61,8 @@
 (use-package rg
   :straight t)
 
+;; See manual build of pdf-tools for nix configuration
+;; https://github.com/politza/pdf-tools/issues/645
 (use-package pdf-tools
   :straight t)
 
